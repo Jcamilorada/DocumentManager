@@ -1,4 +1,4 @@
-DocumentManager
+Document Manager
 ===============
 
 Open Document Management System
@@ -11,7 +11,7 @@ Framework and technologies.
 * [Markdown] - Is the chosen language for create and edit documents. Is extendible with html and the tags are user friendly.
 * [Git] - Git will help the backend to track the changes on the files.
 * [Mongo-DB]  - Mongo store information related to documents like security, document sharing a document etc.
-* [Java] - The server code that provide document and templates APIs is writted in Java. The server side will provide rest based web services to access information from the ui side.
+* Java - The server code that provide document and templates APIs is writted in Java. The server side will provide rest based web services to access information from the ui side.
 
 
 The main features for the project is to provide documents versions and history control of the changes.
