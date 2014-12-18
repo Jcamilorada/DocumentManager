@@ -1,7 +1,7 @@
 What is Document Manager?
 =========================
 
-Document Manager is a open source document management system project that enable the creation and administration of documents and templates focusing on flexibility and usability for people without background on tech. Each document will be written using Markdown Language, and the tracking of the files changes will be handled by Git. 
+Document Manager is a open source document management system project that enable the creation and administration of documents and templates focusing on flexibility and usability for people without background on tech. Each document will be written using Markdown Language, and the tracking of the files changes will be handled by Git.
 
 Framework and technologies.
 
@@ -27,11 +27,24 @@ First release objectives
 
 ### Templates
 
-* User can define templates. 
+* User can define templates.
 * Users can edit/update/remove templates written in [Markdown].
 
+
+Getting Started With UI Develop
+===============================
+For begin the UI Develop (webapp folder) you first need to install some frameworks.
+
+* [Node-Js] is an open source, cross-platform runtime environment. NodeJs enabled us to install plugins that make easier UI develop.
+* [Grunt] is a task executor manager. that run different kind of task (like download dependencies) To install just execute "npm install -g grunt-cli" on a Node-Js Console.
+
+After install this frameworks. is necessary to installs the Dev dependencies. So inside webapp folder execute "npm install". This command will download and install all the necessary node modules.
+
+Finally to run the application run the grunt task "grunt server"
 
 [AngularJS]:http://angularjs.org
 [Markdown]:http://daringfireball.net/projects/markdown/
 [Git]:http://git-scm.com/
 [Mongo-DB]:http://www.mongodb.org/
+[Nojde-Js]:http://nodejs.org/
+[Grunt]:http://gruntjs.com/
