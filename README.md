@@ -46,5 +46,5 @@ Finally to run the application run the grunt task "grunt server"
 [Markdown]:http://daringfireball.net/projects/markdown/
 [Git]:http://git-scm.com/
 [Mongo-DB]:http://www.mongodb.org/
-[Nojde-Js]:http://nodejs.org/
+[Node-Js]:http://nodejs.org/
 [Grunt]:http://gruntjs.com/
