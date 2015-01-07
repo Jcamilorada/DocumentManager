@@ -36,9 +36,21 @@ Getting Started With UI Develop
 For begin the UI Develop (webapp folder) you first need to install some frameworks.
 
 * [Node-Js] is an open source, cross-platform runtime environment. NodeJs enabled us to install plugins that make easier UI develop.
+* [Bower] is a package manager, it is used to fetch and install front-end libraries that are used as dependencies in this project. To install it just run "npm install -g bower" on a Node-Js Console.
 * [Grunt] is a task executor manager. that run different kind of task (like download dependencies) To install just execute "npm install -g grunt-cli" on a Node-Js Console.
 
-After install this frameworks. is necessary to installs the Dev dependencies. So inside webapp folder execute "npm install". This command will download and install all the necessary node modules.
+To add bower dependencies, just follow this steps:
+* Add the dependency to the bower.json.
+* Add the file mappings to the Gruntfile.js in the bowercopy task.
+* Add the concat mapping to the Gruntfile.js in the concat task. 
+
+If you have any doubt related to he configuration of bowercopy mappings please see the following links: 
+* [BowerCopy] 
+* [ConfigureBowerCopy]
+
+After install this frameworks. is necessary to install all dependencies. So inside webapp folder execute the following commands:
+* "npm install". This command will download and install all the necessary node modules.
+* "bower install". This command will download and install all dependencies defined in the bower.json file.
 
 Finally to run the application run the grunt task "grunt server"
 
@@ -48,3 +60,6 @@ Finally to run the application run the grunt task "grunt server"
 [Mongo-DB]:http://www.mongodb.org/
 [Node-Js]:http://nodejs.org/
 [Grunt]:http://gruntjs.com/
+[Bower]:http://bower.io/
+[BowerCopy]:https://www.npmjs.com/package/grunt-bowercopy
+[ConfigureBowerCopy]:http://simonsmith.io/managing-bower-components-with-grunt/

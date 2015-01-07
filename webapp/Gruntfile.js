@@ -29,10 +29,40 @@ module.exports = function(grunt) {
             all: {
                 path: 'http://localhost:<%= express.all.options.port%>'
             }
+        },
+
+        bowercopy: {
+            options: {
+                srcPrefix: 'bower_components'
+            },
+            scripts: {
+                options: {
+                    destPrefix: 'app/js/vendor'
+                },
+                files: {
+                    'angular/angular.min.js': 'angular/angular.min.js',
+                    'angular-route/angular-route.min.js': 'angular-route/angular-route.min.js'
+                }
+            }
+        },
+
+        concat: {
+            angular: {
+                files: {
+                    'app/js/vendor/angular/angular.min.js': ['bower_components/angular/angular.min.js']
+                }
+            },
+            angular_route: {
+                files: {
+                    'app/js/vendor/angular-route/angular-route.min.js': ['bower_components/angular-route/angular-route.min.js']
+                }
+            },
         }
     });
 
     grunt.registerTask('server', [
+    'bowercopy',
+    'concat',
     'express',
     'open',
     'watch'
