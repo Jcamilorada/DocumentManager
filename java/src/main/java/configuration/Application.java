@@ -8,7 +8,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan({
-    "simulator.configuration"
+    "configuration",
+    "domain",
+    "persistence",
+    "restservices"
 })
 public class Application
 {
