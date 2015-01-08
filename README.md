@@ -42,10 +42,10 @@ For begin the UI Develop (webapp folder) you first need to install some framewor
 To add bower dependencies, just follow this steps:
 * Add the dependency to the bower.json.
 * Add the file mappings to the Gruntfile.js in the bowercopy task.
-* Add the concat mapping to the Gruntfile.js in the concat task. 
+* Add the concat mapping to the Gruntfile.js in the concat task.
 
-If you have any doubt related to he configuration of bowercopy mappings please see the following links: 
-* [BowerCopy] 
+If you have any doubt related to he configuration of bowercopy mappings please see the following links:
+* [BowerCopy]
 * [ConfigureBowerCopy]
 
 After install this frameworks. is necessary to install all dependencies. So inside webapp folder execute the following commands:
@@ -63,3 +63,7 @@ Finally to run the application run the grunt task "grunt server"
 [Bower]:http://bower.io/
 [BowerCopy]:https://www.npmjs.com/package/grunt-bowercopy
 [ConfigureBowerCopy]:http://simonsmith.io/managing-bower-components-with-grunt/
+
+License
+===============================
+The Document Manager software is licensed under the GNU GPL v3; see the file COPYING for the full text of the GNU General Public License
