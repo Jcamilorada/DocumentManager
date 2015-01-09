@@ -26,7 +26,7 @@ import java.io.IOException;
  */
 public class StorageNotAvailableException extends IOException
 {
-	private static final String baseMessage = "Storage is not available";
+	private static final String BASE_MESSAGE = "Storage is not available";
 
 	public StorageNotAvailableException(String msg, Throwable cause)
 	{
@@ -35,12 +35,12 @@ public class StorageNotAvailableException extends IOException
 
 	public StorageNotAvailableException()
 	{
-		super(baseMessage);
+		super(BASE_MESSAGE);
 	}
 
 	public StorageNotAvailableException(Throwable cause)
 	{
-		super(baseMessage, cause);
+		super(BASE_MESSAGE, cause);
 	}
 
 	public StorageNotAvailableException(String msg)
