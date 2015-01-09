@@ -1,7 +1,7 @@
 **/node_modules/
 **/target/
 **/bower_components
-***/app/js/vendor
+**/app/js/vendor
 
  # IDEA Project Files
 **/.idea/

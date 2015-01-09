@@ -19,6 +19,8 @@ package domain.document;
 
 import com.google.common.base.Preconditions;
 import configuration.RepositoryProperties;
+import domain.exception.StorageNotAvailableException;
+import domain.exception.UnspecifiedInternalException;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -49,7 +51,7 @@ public class DocumentService
         this.repositoryProperties = Preconditions.checkNotNull(repositoryProperties, "repositoryProperties cannot be null");
     }
 
-    public List<Document> getDocuments()
+    public List<Document> getDocuments() throws StorageNotAvailableException, UnspecifiedInternalException
     {
         String repositoryPath = repositoryProperties.getPath();
         List<Document> documents = Collections.EMPTY_LIST;
@@ -59,11 +61,11 @@ public class DocumentService
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            throw new StorageNotAvailableException(e);
         }
         catch (GitAPIException e)
         {
-            e.printStackTrace();
+            throw new UnspecifiedInternalException();
         }
         return  documents;
     }
