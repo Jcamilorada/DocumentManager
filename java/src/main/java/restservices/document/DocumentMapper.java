@@ -23,6 +23,8 @@ import restservices.common.AbstractBusinessObjectMapper;
 
 /**
  * @author Juan Camilo Rada
+ *
+ * {@code Document} and {@code DocumentDTO} mapper.
  */
 @Component
 public class DocumentMapper extends AbstractBusinessObjectMapper<Document, DocumentDTO>

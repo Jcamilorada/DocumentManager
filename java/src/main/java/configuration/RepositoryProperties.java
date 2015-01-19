@@ -18,11 +18,16 @@
 package configuration;
 
 import lombok.Data;
-import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author Juan Camilo Rada
+ *
+ * Repository properties. Store system properties related to application functionality. The properties are store in
+ * application.properties file using the repository prefix.
+ */
 @Data
 @Configuration
 @EnableConfigurationProperties

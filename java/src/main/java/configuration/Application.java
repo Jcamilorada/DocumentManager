@@ -22,6 +22,12 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author Juan Camilo Rada
+ *
+ * Main spring configuration class. The component scan annotation defined the package to explore when a dependecy resolution
+ * is required. @see <a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#using-boot-configuration-classes">Spring configuration documentation</a>
+ */
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan({

@@ -21,6 +21,8 @@ import lombok.Data;
 
 /**
  * @author Juan Camilo Rada
+ *
+ * Document data transfer object. Used on rest service resource to transfer data with the ui.
  */
 @Data
 public class DocumentDTO

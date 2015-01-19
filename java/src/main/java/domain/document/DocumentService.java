@@ -20,11 +20,11 @@ package domain.document;
 import com.google.common.base.Preconditions;
 import configuration.RepositoryProperties;
 import domain.exception.StorageNotAvailableException;
-import domain.exception.UnspecifiedInternalException;
-import org.eclipse.jgit.api.errors.GitAPIException;
+import domain.exception.UnspecifiedDomainException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import persistence.git.document.DocumentRepository;
+import persistence.git.exception.SourceControlUnspecifiedException;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -51,10 +51,10 @@ public class DocumentService
         this.repositoryProperties = Preconditions.checkNotNull(repositoryProperties, "repositoryProperties cannot be null");
     }
 
-    public List<Document> getDocuments() throws StorageNotAvailableException, UnspecifiedInternalException
+    public List<Document> getDocuments() throws StorageNotAvailableException, UnspecifiedDomainException
     {
         String repositoryPath = repositoryProperties.getPath();
-        List<Document> documents = Collections.EMPTY_LIST;
+        List<Document> documents = Collections.<Document>emptyList();
         try
         {
             documents =  documentBeanMapper.newBusinessObjectList(documentRepository.getDocuments(repositoryPath));
@@ -63,9 +63,9 @@ public class DocumentService
         {
             throw new StorageNotAvailableException(e);
         }
-        catch (GitAPIException e)
+        catch (SourceControlUnspecifiedException e)
         {
-            throw new UnspecifiedInternalException();
+            throw new UnspecifiedDomainException(e);
         }
         return  documents;
     }

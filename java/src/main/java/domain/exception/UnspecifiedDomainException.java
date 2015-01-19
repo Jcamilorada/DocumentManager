@@ -1,5 +1,5 @@
 /*
- * UnspecifiedInternalException.java is part of Document Manager (c) 2015.
+ * UnspecifiedDomainException.java is part of Document Manager (c) 2015.
  *
  * Document Manager is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,28 +21,28 @@ package domain.exception;
  * It may happen when an error occurs within an underlying component
  * and its details should not be exposed or they are unknown.
  */
-public class UnspecifiedInternalException extends Exception
+public class UnspecifiedDomainException extends Exception
 {
-	private static final String BASE_MESSAGE = "Unspecified internal exception";
+    private static final String BASE_MESSAGE = "Unspecified domain exception";
 
-	public UnspecifiedInternalException(String msg, Throwable cause)
-	{
-		super(msg, cause);
-	}
+    public UnspecifiedDomainException(String msg, Throwable cause)
+    {
+        super(msg, cause);
+    }
 
-	public UnspecifiedInternalException()
-	{
-		super(BASE_MESSAGE);
-	}
+    public UnspecifiedDomainException()
+    {
+        super(BASE_MESSAGE);
+    }
 
-	public UnspecifiedInternalException(Throwable cause)
-	{
-		super(BASE_MESSAGE, cause);
-	}
+    public UnspecifiedDomainException(Throwable cause)
+    {
+        super(BASE_MESSAGE, cause);
+    }
 
-	public UnspecifiedInternalException(String msg)
-	{
-		super(msg);
-	}
+    public UnspecifiedDomainException(String msg)
+    {
+        super(msg);
+    }
 }
 

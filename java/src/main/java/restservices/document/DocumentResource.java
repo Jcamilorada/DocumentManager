@@ -20,7 +20,7 @@ package restservices.document;
 import com.google.common.base.Preconditions;
 import domain.document.DocumentService;
 import domain.exception.StorageNotAvailableException;
-import domain.exception.UnspecifiedInternalException;
+import domain.exception.UnspecifiedDomainException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +30,8 @@ import java.util.List;
 
 /**
  * @author Juan Camilo Rada
+ *
+ * {@code DocumentDTO} rest service to comunicate and send information to the ui side.
  */
 @Controller
 @RequestMapping("/documents")
@@ -48,7 +50,7 @@ public class DocumentResource
     @RequestMapping
     public
     @ResponseBody
-    List<DocumentDTO> getDocuments() throws UnspecifiedInternalException, StorageNotAvailableException
+    List<DocumentDTO> getDocuments() throws UnspecifiedDomainException, StorageNotAvailableException
     {
         return documentMapper.newBusinessObjectDTOList(documentService.getDocuments());
     }

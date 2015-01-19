@@ -26,25 +26,25 @@ package domain.exception;
  */
 public class DocumentNotExistException extends IllegalStateException
 {
-	private static final String BASE_MESSAGE = "Document not found";
+    private static final String BASE_MESSAGE = "Document not found";
 
-	public DocumentNotExistException(String msg, Throwable cause)
-	{
-		super(msg, cause);
-	}
+    public DocumentNotExistException(String msg, Throwable cause)
+    {
+        super(msg, cause);
+    }
 
-	public DocumentNotExistException()
-	{
-		super(BASE_MESSAGE);
-	}
+    public DocumentNotExistException()
+    {
+        super(BASE_MESSAGE);
+    }
 
-	public DocumentNotExistException(Throwable cause)
-	{
-		super(BASE_MESSAGE, cause);
-	}
+    public DocumentNotExistException(Throwable cause)
+    {
+        super(BASE_MESSAGE, cause);
+    }
 
-	public DocumentNotExistException(String msg)
-	{
-		super(msg);
-	}
+    public DocumentNotExistException(String msg)
+    {
+        super(msg);
+    }
 }

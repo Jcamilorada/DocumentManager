@@ -24,12 +24,17 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+/**
+ * @author Juan Camilo Rada
+ *
+ * Git Object Repository. Provides git objects operations.
+ */
 @Component
-public class GitObjectRepository
+class GitObjectRepository
 {
     private static final String CONTENT_FORMAT = "UTF-8";
 
-    public String getObjectContent(final ObjectId objectId, final Repository repository) throws IOException
+    String getObjectContent(final ObjectId objectId, final Repository repository) throws IOException
     {
         ObjectLoader loader = repository.open(objectId);
         return new String(loader.getBytes(), CONTENT_FORMAT);

@@ -19,6 +19,7 @@ package persistence.git.common;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Juan Camilo Rada
@@ -30,22 +31,16 @@ public abstract class AbstractBusinessObjectBeanMapper<T, BEAN> implements IBusi
     public List<T> newBusinessObjectList(final List<BEAN> businessObjectBEAN)
     {
         List<T> businessObjectList = new ArrayList<>(businessObjectBEAN.size());
-        for (BEAN BEAN : businessObjectBEAN)
-        {
-            businessObjectList.add(this.newBusinessObject(BEAN));
-        }
+        businessObjectList.addAll(businessObjectBEAN.stream().map(this::newBusinessObject).collect(Collectors.toList()));
 
         return businessObjectList;
     }
 
     public List<BEAN> newBusinessObjectDTOList(final List<T> businessObjectList)
     {
-        List<BEAN> businessObjectBEANList = new ArrayList<>(businessObjectList.size());
-        for (T businessObject : businessObjectList)
-        {
-            businessObjectBEANList.add(this.newBusinessObjectDTO(businessObject));
-        }
+        List<BEAN> beanList = new ArrayList<>(businessObjectList.size());
+        beanList.addAll(businessObjectList.stream().map(this::newBusinessObjectDTO).collect(Collectors.toList()));
 
-        return businessObjectBEANList;
+        return beanList;
     }
 }

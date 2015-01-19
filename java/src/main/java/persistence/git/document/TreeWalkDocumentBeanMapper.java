@@ -21,6 +21,11 @@ import persistence.git.common.AbstractBusinessObjectBeanMapper;
 import org.eclipse.jgit.treewalk.TreeWalk;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Juan Camilo Rada
+ *
+ * {@code TreeWalk} - {@code DocumentBean} mapper. Map beetween TreeWalk jgit object and DocumentBean mapper.
+ */
 @Component
 class TreeWalkDocumentBeanMapper extends AbstractBusinessObjectBeanMapper<TreeWalk, DocumentBean>
 {

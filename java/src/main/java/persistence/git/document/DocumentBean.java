@@ -19,6 +19,11 @@ package persistence.git.document;
 
 import lombok.Data;
 
+/**
+ * @author Juan Camilo Rada
+ *
+ * Contains all the document information as name, content and path.
+ */
 @Data
 public class DocumentBean
 {
