@@ -40,8 +40,8 @@ class RevCommitRepository
         Optional<RevCommit> lastCommit;
         try
         {
-            lastCommit = Lists.newArrayList(git.log().call()).stream().sorted(Collections.reverseOrder((RevCommit u1, RevCommit u2) -> Integer.compare(u1.getCommitTime(), u2.getCommitTime())))
-                .findFirst();
+            lastCommit = Lists.newArrayList(git.log().call()).stream().sorted(Collections.reverseOrder(
+                (RevCommit u1, RevCommit u2) -> Integer.compare(u1.getCommitTime(), u2.getCommitTime()))).findFirst();
         }
         catch (GitAPIException e)
         {

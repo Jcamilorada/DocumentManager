@@ -18,8 +18,8 @@
 package restservices.document;
 
 import com.google.common.base.Preconditions;
-import domain.document.DocumentService;
-import domain.exception.StorageNotAvailableException;
+import domain.document.information.DocumentService;
+import domain.exception.ResourceNotAvailableException;
 import domain.exception.UnspecifiedDomainException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,20 +38,20 @@ import java.util.List;
 public class DocumentResource
 {
     private final DocumentService documentService;
-    private final DocumentMapper documentMapper;
+    private final DocumentDTOMapper documentDTOMapper;
 
     @Autowired
-    DocumentResource(final DocumentService documentService, final  DocumentMapper documentMapper)
+    DocumentResource(final DocumentService documentService, final DocumentDTOMapper documentDTOMapper)
     {
         this.documentService = Preconditions.checkNotNull(documentService, "documentService cannot be null");
-        this.documentMapper = Preconditions.checkNotNull(documentMapper, "documentMapper cannot be null");
+        this.documentDTOMapper = Preconditions.checkNotNull(documentDTOMapper, "documentMapper cannot be null");
     }
 
     @RequestMapping
     public
     @ResponseBody
-    List<DocumentDTO> getDocuments() throws UnspecifiedDomainException, StorageNotAvailableException
+    List<DocumentDTO> getAllDocuments() throws UnspecifiedDomainException, ResourceNotAvailableException
     {
-        return documentMapper.newBusinessObjectDTOList(documentService.getDocuments());
+        return documentDTOMapper.newBusinessObjectDTOList(documentService.getAllDocuments());
     }
 }

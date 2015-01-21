@@ -15,11 +15,11 @@
  * along with Document Manager.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package domain.document;
+package domain.document.information;
 
 import com.google.common.base.Preconditions;
 import configuration.RepositoryProperties;
-import domain.exception.StorageNotAvailableException;
+import domain.exception.ResourceNotAvailableException;
 import domain.exception.UnspecifiedDomainException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -37,31 +37,31 @@ import java.util.List;
 public class DocumentService
 {
     private final DocumentRepository documentRepository;
-    private final DocumentBeanMapper documentBeanMapper;
+    private final DocumentMapper documentMapper;
     private final RepositoryProperties repositoryProperties;
 
     @Autowired
     DocumentService(
         final DocumentRepository documentRepository,
-        final DocumentBeanMapper documentBeanMapper,
+        final DocumentMapper documentMapper,
         final RepositoryProperties repositoryProperties)
     {
         this.documentRepository = Preconditions.checkNotNull(documentRepository, "documentRepository cannot be null");
-        this.documentBeanMapper = Preconditions.checkNotNull(documentBeanMapper, "documentMapper cannot be null");
+        this.documentMapper = Preconditions.checkNotNull(documentMapper, "documentMapper cannot be null");
         this.repositoryProperties = Preconditions.checkNotNull(repositoryProperties, "repositoryProperties cannot be null");
     }
 
-    public List<Document> getDocuments() throws StorageNotAvailableException, UnspecifiedDomainException
+    public List<Document> getAllDocuments() throws ResourceNotAvailableException, UnspecifiedDomainException
     {
         String repositoryPath = repositoryProperties.getPath();
         List<Document> documents = Collections.<Document>emptyList();
         try
         {
-            documents =  documentBeanMapper.newBusinessObjectList(documentRepository.getDocuments(repositoryPath));
+            documents =  documentMapper.newBusinessObjectList(documentRepository.getDocuments(repositoryPath));
         }
         catch (IOException e)
         {
-            throw new StorageNotAvailableException(e);
+            throw new ResourceNotAvailableException(e);
         }
         catch (SourceControlUnspecifiedException e)
         {

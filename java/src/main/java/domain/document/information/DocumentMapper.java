@@ -15,7 +15,7 @@
  * along with Document Manager.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package domain.document;
+package domain.document.information;
 
 import domain.common.AbstractBusinessObjectBeanMapper;
 import org.springframework.stereotype.Component;
@@ -25,7 +25,7 @@ import persistence.git.document.DocumentBean;
  * @author Juan Camilo Rada
  */
 @Component
-class DocumentBeanMapper extends AbstractBusinessObjectBeanMapper<DocumentBean, Document>
+class DocumentMapper extends AbstractBusinessObjectBeanMapper<DocumentBean, Document>
 {
     @Override
     public DocumentBean newBusinessObjectBean(Document businessObject)

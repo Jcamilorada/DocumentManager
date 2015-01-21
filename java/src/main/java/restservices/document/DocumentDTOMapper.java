@@ -17,7 +17,7 @@
 
 package restservices.document;
 
-import domain.document.Document;
+import domain.document.information.Document;
 import org.springframework.stereotype.Component;
 import restservices.common.AbstractBusinessObjectMapper;
 
@@ -27,7 +27,7 @@ import restservices.common.AbstractBusinessObjectMapper;
  * {@code Document} and {@code DocumentDTO} mapper.
  */
 @Component
-public class DocumentMapper extends AbstractBusinessObjectMapper<Document, DocumentDTO>
+public class DocumentDTOMapper extends AbstractBusinessObjectMapper<Document, DocumentDTO>
 {
     @Override
     public Document newBusinessObject(final DocumentDTO businessObjectDTO)

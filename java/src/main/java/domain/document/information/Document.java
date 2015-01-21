@@ -15,12 +15,13 @@
  * along with Document Manager.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package domain.document;
+package domain.document.information;
 
 import lombok.Data;
 
 /**
  * @author Juan Camilo Rada
+ *
  */
 @Data
 public class Document

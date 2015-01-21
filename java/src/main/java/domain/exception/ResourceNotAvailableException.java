@@ -24,26 +24,26 @@ import java.io.IOException;
  * it is not reliable.
  * It may happen due to network or hardware failure.
  */
-public class StorageNotAvailableException extends IOException
+public class ResourceNotAvailableException extends IOException
 {
     private static final String BASE_MESSAGE = "Storage is not available";
 
-    public StorageNotAvailableException(String msg, Throwable cause)
+    public ResourceNotAvailableException(String msg, Throwable cause)
     {
         super(msg, cause);
     }
 
-    public StorageNotAvailableException()
+    public ResourceNotAvailableException()
     {
         super(BASE_MESSAGE);
     }
 
-    public StorageNotAvailableException(Throwable cause)
+    public ResourceNotAvailableException(Throwable cause)
     {
         super(BASE_MESSAGE, cause);
     }
 
-    public StorageNotAvailableException(String msg)
+    public ResourceNotAvailableException(String msg)
     {
         super(msg);
     }
