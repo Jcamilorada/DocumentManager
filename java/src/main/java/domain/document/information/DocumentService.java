@@ -23,7 +23,7 @@ import domain.exception.ResourceNotAvailableException;
 import domain.exception.UnspecifiedDomainException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import persistence.git.document.DocumentRepository;
+import persistence.git.document.SourceControlDocumentRepository;
 import persistence.git.exception.SourceControlUnspecifiedException;
 
 import java.io.IOException;
@@ -36,28 +36,32 @@ import java.util.List;
 @Component
 public class DocumentService
 {
-    private final DocumentRepository documentRepository;
+    private final SourceControlDocumentRepository sourceControlDocumentRepository;
     private final DocumentMapper documentMapper;
     private final RepositoryProperties repositoryProperties;
 
     @Autowired
     DocumentService(
-        final DocumentRepository documentRepository,
+        final SourceControlDocumentRepository sourceControlDocumentRepository,
         final DocumentMapper documentMapper,
         final RepositoryProperties repositoryProperties)
     {
-        this.documentRepository = Preconditions.checkNotNull(documentRepository, "documentRepository cannot be null");
         this.documentMapper = Preconditions.checkNotNull(documentMapper, "documentMapper cannot be null");
-        this.repositoryProperties = Preconditions.checkNotNull(repositoryProperties, "repositoryProperties cannot be null");
+        this.sourceControlDocumentRepository =
+            Preconditions.checkNotNull(sourceControlDocumentRepository, "documentRepository cannot be null");
+        this.repositoryProperties =
+            Preconditions.checkNotNull(repositoryProperties, "repositoryProperties cannot be null");
     }
 
     public List<Document> getAllDocuments() throws ResourceNotAvailableException, UnspecifiedDomainException
     {
-        String repositoryPath = repositoryProperties.getPath();
-        List<Document> documents = Collections.<Document>emptyList();
         try
         {
-            documents =  documentMapper.newBusinessObjectList(documentRepository.getDocuments(repositoryPath));
+            String repositoryPath = repositoryProperties.getPath();
+            List<Document> documents  =
+                documentMapper.newBusinessObjectList(sourceControlDocumentRepository.getDocuments(repositoryPath));
+
+            return documents;
         }
         catch (IOException e)
         {
@@ -67,9 +71,5 @@ public class DocumentService
         {
             throw new UnspecifiedDomainException(e);
         }
-        return  documents;
     }
-
-
-
 }

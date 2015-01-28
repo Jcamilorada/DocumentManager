@@ -1,5 +1,5 @@
 /*
- * DocumentAccessRights.java is part of Document Manager (c) 2015.
+ * DocumentIndexInformation.java is part of Document Manager (c) 2015.
  *
  * Document Manager is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -12,25 +12,16 @@
  * GNU General Public License for more details.
  */
 
-package persistence.mongodb;
+package persistence.lucene.search;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
-/**
- * @author Jairo Andres Velasco
- *
- * Mongo document object root, this object can contains MongoDB-specific annotations
- */
 @Data
-class DocumentAccessPermission
+public class DocumentIndexInformation
 {
-	@Id
-	private String id;
-	private String documentId;
-	private String user;
-	private String owner;
-	private boolean ableToRead;
-	private boolean ableToUpdate;
-	private boolean ableToDelete;
+    private String name;
+    private String path;
+    private String id;
+    private String content;
+    private String owner;
 }

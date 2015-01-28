@@ -23,6 +23,8 @@ import persistence.git.document.DocumentBean;
 
 /**
  * @author Juan Camilo Rada
+ *
+ * {@code DocumentBean} - {@code Document} mapper.
  */
 @Component
 class DocumentMapper extends AbstractBusinessObjectBeanMapper<DocumentBean, Document>
@@ -30,7 +32,13 @@ class DocumentMapper extends AbstractBusinessObjectBeanMapper<DocumentBean, Docu
     @Override
     public DocumentBean newBusinessObjectBean(Document businessObject)
     {
-        throw new UnsupportedOperationException();
+        DocumentBean documentBean = new DocumentBean();
+        documentBean.setContent(businessObject.getContent());
+        documentBean.setId(businessObject.getId());
+        documentBean.setPath(businessObject.getPath());
+        documentBean.setName(businessObject.getName());
+
+        return documentBean;
     }
 
     @Override

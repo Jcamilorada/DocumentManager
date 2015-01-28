@@ -22,6 +22,7 @@ import lombok.Data;
 /**
  * @author Juan Camilo Rada
  *
+ * Document domain bussness object.
  */
 @Data
 public class Document
@@ -30,4 +31,5 @@ public class Document
     private String path;
     private String id;
     private String content;
+    private String owner;
 }

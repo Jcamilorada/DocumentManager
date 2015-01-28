@@ -22,6 +22,14 @@ import com.google.common.collect.Iterables;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Juan Camilo Rada
+ *
+ * {@code IBusinessObjectBeanMapper} skeleton class abstract class. Provides default list mapping methods implementations.
+ *
+ * @param <Bean> Bean object from persistence layer.
+ * @param <Bo> Business object used in domain operation.
+ */
 public abstract class AbstractBusinessObjectBeanMapper<Bean, Bo> implements IBusinessObjectBeanMapper<Bean, Bo>
 {
     public List<Bean> newBusinessObjectBeanList(final Iterable<Bo> businessObjectList)

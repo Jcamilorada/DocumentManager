@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ search-engine-context.xml is part of Document Manager (c) 2015.
+  ~
+  ~ Document Manager is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Document Manager is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  -->
+
+<!--
+  ~ search-engine-context.xml is part of Document Manager (c) 2015.
+  ~
+  ~ Document Manager is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Document Manager is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean class="org.apache.lucene.store.RAMDirectory" name="RAMDirectory"/>
+
+    <bean class="org.apache.lucene.analysis.standard.StandardAnalyzer" name="StandardAnalyzer"/>
+
+    <bean class="org.apache.lucene.index.IndexWriterConfig" name="IndexWriterConfig">
+        <constructor-arg>
+            <value type="org.apache.lucene.util.Version">LUCENE_4_10_3</value>
+        </constructor-arg>
+        <constructor-arg ref="StandardAnalyzer"/>
+    </bean>
+
+    <bean class="org.apache.lucene.index.IndexWriter">
+        <constructor-arg ref="RAMDirectory"/>
+        <constructor-arg ref="IndexWriterConfig"/>
+    </bean>
+
+
+    <bean  name="IndexReader" class="org.apache.lucene.index.DirectoryReader" factory-method="open" destroy-method="close" scope="request">
+        <constructor-arg ref="RAMDirectory"/>
+    </bean>
+
+</beans>

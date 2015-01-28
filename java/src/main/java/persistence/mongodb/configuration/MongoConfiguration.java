@@ -1,5 +1,5 @@
 /*
- * StorageNotAvailableException.java is part of Document Manager (c) 2015.
+ * MongoConfiguration.java is part of Document Manager (c) 2015.
  *
  * Document Manager is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -12,23 +12,17 @@
  * GNU General Public License for more details.
  */
 
-package persistence.lucene.configuration;
+package persistence.mongodb.configuration;
 
-import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.RAMDirectory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.MongoOperations;
 
 @Configuration
-public class LuceneConfiguration
+public class MongoConfiguration
 {
-    public static final String DOCUMENT_NAME_FIELD = "name";
-    public static final String DOCUMENT_PATH_FIELD = "path";
-    public static final String DOCUMENT_CONTENT_FIELD = "content";
 
-    @Bean
-    public Directory getLuceneDirectory()
-    {
-        return new RAMDirectory();
-    }
+
+
 }

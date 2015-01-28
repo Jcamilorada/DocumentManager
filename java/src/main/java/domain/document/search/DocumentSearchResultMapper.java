@@ -32,9 +32,7 @@
 package domain.document.search;
 
 import domain.common.AbstractBusinessObjectBeanMapper;
-import domain.document.information.Document;
 import org.springframework.stereotype.Component;
-import persistence.git.document.DocumentBean;
 import persistence.lucene.search.DocumentSearchResultBean;
 
 /**
@@ -44,7 +42,7 @@ import persistence.lucene.search.DocumentSearchResultBean;
 class DocumentSearchResultMapper extends AbstractBusinessObjectBeanMapper<DocumentSearchResultBean, DocumentSearchResult>
 {
     @Override
-    public DocumentSearchResultBean newBusinessObjectBean(DocumentSearchResult businessObject)
+    public DocumentSearchResultBean newBusinessObjectBean(final DocumentSearchResult businessObject)
     {
         return null;
     }
@@ -53,7 +51,7 @@ class DocumentSearchResultMapper extends AbstractBusinessObjectBeanMapper<Docume
     public DocumentSearchResult newBusinessObject(final DocumentSearchResultBean businessObjectBean)
     {
         DocumentSearchResult searchResult = new DocumentSearchResult();
-        searchResult.setName(businessObjectBean.getName());
+        searchResult.setDocument(businessObjectBean.getName());
         searchResult.setPath(businessObjectBean.getPath());
         searchResult.setScore(businessObjectBean.getScore());
         searchResult.setFragments(businessObjectBean.getFragments());

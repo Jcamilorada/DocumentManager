@@ -15,49 +15,67 @@
 package domain.document.search;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Strings;
 import domain.exception.ResourceNotAvailableException;
+import domain.exception.UnspecifiedDomainException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import persistence.lucene.exception.InvalidAPIUsageException;
 import persistence.lucene.search.DocumentSearchResultBean;
-import persistence.lucene.search.LuceneSearchResource;
+import persistence.lucene.search.FullTextSearchResource;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * @author Juan Camilo Rada
+ *
+ * DocumentSearchService provides business operations for document search.
  */
 @Component
 public class DocumentSearchService
 {
-    private final LuceneSearchResource luceneSearchResource;
+    private final FullTextSearchResource fullTextSearchResource;
     private final DocumentSearchResultMapper documentSearchResultMapper;
 
+    private static final String [] SEARCH_FIELD_LIST =
+    {
+        FullTextSearchResource.DOCUMENT_NAME_FIELD,
+        FullTextSearchResource.DOCUMENT_PATH_FIELD,
+        FullTextSearchResource.DOCUMENT_CONTENT_FIELD
+    };
+
     @Autowired
-    DocumentSearchService(final LuceneSearchResource luceneSearchResource,
+    DocumentSearchService(final FullTextSearchResource fullTextSearchResource,
                           final DocumentSearchResultMapper documentSearchResultMapper)
     {
-        this.luceneSearchResource = Preconditions.checkNotNull(luceneSearchResource);
+        this.fullTextSearchResource = Preconditions.checkNotNull(fullTextSearchResource);
         this.documentSearchResultMapper = Preconditions.checkNotNull(documentSearchResultMapper);
     }
 
-    public List<DocumentSearchResult> searchDocuments(String query) throws ResourceNotAvailableException, domain.exception.InvalidAPIUsageException
+    public List<DocumentSearchResult> searchDocuments(
+        final String query, final String username) throws ResourceNotAvailableException, UnspecifiedDomainException
     {
-        List<DocumentSearchResultBean> searchResultBeans = null;
+        assert !Strings.isNullOrEmpty(query);
+        assert !Strings.isNullOrEmpty(username);
+
         try
         {
-            searchResultBeans = luceneSearchResource.getDocuments(query);
+            List<DocumentSearchResultBean> searchResultBeans =
+                fullTextSearchResource.getDocuments(query, username, SEARCH_FIELD_LIST);
+
+            return documentSearchResultMapper.newBusinessObjectList(searchResultBeans);
         }
+
         catch (InvalidAPIUsageException e)
         {
-            throw new domain.exception.InvalidAPIUsageException(e);
+            throw new UnspecifiedDomainException(e);
         }
+
         catch (IOException e)
         {
             throw new ResourceNotAvailableException(e);
         }
-
-        return documentSearchResultMapper.newBusinessObjectList(searchResultBeans);
     }
 }

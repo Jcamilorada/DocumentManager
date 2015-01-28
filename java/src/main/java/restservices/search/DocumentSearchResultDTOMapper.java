@@ -53,7 +53,7 @@ public class DocumentSearchResultDTOMapper extends AbstractBusinessObjectMapper<
     public DocumentSearchResultDTO newBusinessObjectDTO(final DocumentSearchResult businessObject)
     {
         DocumentSearchResultDTO documentSearchResultDTO = new DocumentSearchResultDTO();
-        documentSearchResultDTO.setName(businessObject.getName());
+        documentSearchResultDTO.setName(businessObject.getDocument());
         documentSearchResultDTO.setPath(businessObject.getPath());
         documentSearchResultDTO.setScore(businessObject.getScore());
         documentSearchResultDTO.setFragments(businessObject.getFragments());

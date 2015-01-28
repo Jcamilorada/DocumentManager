@@ -41,7 +41,7 @@ import java.util.Optional;
  * Document repository. Implement document base operation like query, persist and update changes on documents.
  */
 @Component
-public class DocumentRepository
+public class SourceControlDocumentRepository
 {
     private final FileRepositoryBuilder fileRepositoryBuilder = new FileRepositoryBuilder();
     private static final String PATH_REPOSITORY = "test_repository";
@@ -51,10 +51,8 @@ public class DocumentRepository
     private final TreeWalkDocumentBeanMapper treeWalkDocumentBeanMapper;
 
     @Autowired
-    DocumentRepository(
-        final RevCommitRepository revCommitRepository,
-        final GitObjectRepository gitObjectRepository,
-        final TreeWalkDocumentBeanMapper treeWalkDocumentBeanMapper)
+    SourceControlDocumentRepository(
+        final RevCommitRepository revCommitRepository, final GitObjectRepository gitObjectRepository, final TreeWalkDocumentBeanMapper treeWalkDocumentBeanMapper)
     {
         this.revCommitRepository=  Preconditions.checkNotNull(revCommitRepository, "revCommitRepository cannot be null");
         this.gitObjectRepository =  Preconditions.checkNotNull(gitObjectRepository, "gitObjectRepository cannot be null");

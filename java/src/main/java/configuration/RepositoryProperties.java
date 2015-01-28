@@ -36,4 +36,5 @@ public class RepositoryProperties
 {
     private String path;
     private String documentsPath;
+    private String defaultOwner;
 }

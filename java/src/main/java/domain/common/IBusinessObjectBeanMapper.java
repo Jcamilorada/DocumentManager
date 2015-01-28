@@ -17,6 +17,16 @@
 
 package domain.common;
 
+/**
+ *
+ * @author Juan Camilo Rada
+ *
+ * IBusinessObjectBeanMapper interface. Represent the default functionally for mapping between Domain and Bean business
+ * objects.
+ *
+ * @param <Bean> Bean object from persistence layer.
+ * @param <BO> Business object used in domain operation.
+ */
 public interface IBusinessObjectBeanMapper<Bean, BO>
 {
     public Bean newBusinessObjectBean(final BO businessObject);

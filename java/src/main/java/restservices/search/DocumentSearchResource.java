@@ -65,12 +65,12 @@ public class DocumentSearchResource
             Preconditions.checkNotNull(documentSearchResultDTOMapper, "documentSearchResultMapper cannot be null");
     }
 
-    @RequestMapping("/{query}")
+    @RequestMapping("/{query}/user/{user}")
     public
     @ResponseBody
-    List<DocumentSearchResultDTO> getAllDocuments(final @PathVariable String query)
+    List<DocumentSearchResultDTO> getAllDocuments(final @PathVariable String query, final @PathVariable String user)
         throws UnspecifiedDomainException, ResourceNotAvailableException, InvalidAPIUsageException
     {
-        return documentSearchResultDTOMapper.newBusinessObjectDTOList(documentSearchService.searchDocuments(query));
+        return documentSearchResultDTOMapper.newBusinessObjectDTOList(documentSearchService.searchDocuments(query, user));
     }
 }

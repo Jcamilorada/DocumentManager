@@ -1,5 +1,5 @@
 /*
- * DocumentAccessRights.java is part of Document Manager (c) 2015.
+ * DocumentMetadataRepository.java is part of Document Manager (c) 2015.
  *
  * Document Manager is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -12,31 +12,14 @@
  * GNU General Public License for more details.
  */
 
-package persistence.mongodb;
+package persistence.mongodb.security;
 
-import lombok.Data;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**
  * @author Jairo Andres Velasco
  */
-@Data
-public class DocumentAccessPermissionBean
+interface DocumentPermissionRepository extends MongoRepository<DocumentAccessPermissionBean, String>
 {
-	private String id;
-	private String documentId;
-	private String user;
-	private String owner;
-	private boolean ableToRead;
-	private boolean ableToUpdate;
-	private boolean ableToDelete;
-
-	public boolean hasFullControl()
-	{
-		return isAbleToDelete() && isAbleToUpdate();
-	}
-
-	public boolean isAbleToRead()
-	{
-		return ableToRead || ableToUpdate || ableToDelete;
-	}
+    DocumentAccessPermissionBean findByDocumentId(String documentId);
 }

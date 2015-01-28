@@ -1,5 +1,5 @@
 /*
- * DocumentBean.java is part of Document Manager (c) 2015.
+ * DocumentAccessRights.java is part of Document Manager (c) 2015.
  *
  * Document Manager is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -10,25 +10,27 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Document Manager.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package persistence.git.document;
+package persistence.mongodb.security;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 /**
- * @author Juan Camilo Rada
+ * @author Jairo Andres Velasco
  *
- * Contains all the document information as document, content and path.
+ * Mongo document object root, this object can contains MongoDB-specific annotations
  */
 @Data
-public class DocumentBean
+public class DocumentAccessPermissionBean
 {
-    private String name;
-    private String path;
+    @Id
     private String id;
-    private String content;
+    private String documentId;
+    private String user;
+    private String owner;
+    private boolean ableToRead;
+    private boolean ableToUpdate;
+    private boolean ableToDelete;
 }

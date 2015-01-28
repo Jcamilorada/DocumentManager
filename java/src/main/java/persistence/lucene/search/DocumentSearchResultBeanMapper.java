@@ -19,11 +19,7 @@ package persistence.lucene.search;
 
 import org.apache.lucene.document.Document;
 import org.apache.lucene.search.highlight.TextFragment;
-import org.eclipse.jgit.treewalk.TreeWalk;
 import org.springframework.stereotype.Component;
-import persistence.git.common.AbstractBusinessObjectBeanMapper;
-import persistence.git.document.DocumentBean;
-import persistence.lucene.configuration.LuceneConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +37,8 @@ class DocumentSearchResultBeanMapper
         final Document document, final float score, final TextFragment[] fragments)
     {
         DocumentSearchResultBean searchResultBean = new DocumentSearchResultBean();
-        searchResultBean.setPath(document.getField(LuceneConfiguration.DOCUMENT_PATH_FIELD).stringValue());
-        searchResultBean.setName(document.getField(LuceneConfiguration.DOCUMENT_NAME_FIELD).stringValue());
+        searchResultBean.setPath(document.getField(FullTextSearchResource.DOCUMENT_PATH_FIELD).stringValue());
+        searchResultBean.setName(document.getField(FullTextSearchResource.DOCUMENT_NAME_FIELD).stringValue());
         searchResultBean.setScore(score);
         searchResultBean.setFragments(getFragmentsString(fragments));
 

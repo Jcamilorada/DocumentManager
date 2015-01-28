@@ -21,6 +21,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 /**
  * @author Juan Camilo Rada
@@ -30,6 +32,8 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableAutoConfiguration
+@ImportResource("search-engine-context.xml")
+@EnableMongoRepositories(basePackages = "persistence.mongodb")
 @ComponentScan({
     "configuration",
     "domain",

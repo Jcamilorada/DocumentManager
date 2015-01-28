@@ -24,7 +24,7 @@ import java.util.List;
 @Data
 public class DocumentSearchResult
 {
-    private String name;
+    private String document;
     private String path;
     private float score;
     private List<String> fragments;
